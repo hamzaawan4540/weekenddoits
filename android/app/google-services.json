@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "48297602368",
+    "project_id": "weekenddoit-6d41e",
+    "storage_bucket": "weekenddoit-6d41e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48297602368:android:501b77c544b15521771ea5",
+        "android_client_info": {
+          "package_name": "com.weekenddoit.now"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfpRNzDWxoP7E0alJNlrQVChRdZ4jrkgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48297602368:android:d160763a73389aed771ea5",
+        "android_client_info": {
+          "package_name": "com.weekenddoit.now"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfpRNzDWxoP7E0alJNlrQVChRdZ4jrkgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
