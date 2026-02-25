@@ -80,9 +80,19 @@ class _ApartmentBookingScreenState extends State<ApartmentBookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Apartment",
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+        title: Text(
+          "Book Apartment",
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -134,7 +144,8 @@ class _ApartmentBookingScreenState extends State<ApartmentBookingScreen> {
                     : const Icon(Icons.check_circle),
                 label: Text(isSubmitting ? "Submitting..." : "Confirm Booking"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: const Color(0xFF00A896),
+                  foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   textStyle: GoogleFonts.poppins(
                       fontSize: 16, fontWeight: FontWeight.w600),

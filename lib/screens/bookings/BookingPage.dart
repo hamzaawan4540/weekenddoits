@@ -26,119 +26,83 @@ class BookingPage extends StatelessWidget {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-        // Subtle background
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(0, -1),
-              end: Alignment(0, 0.5),
-              colors: [Color(0xFFe8f6f3), Color(0xFFF7FBFA)],
+        backgroundColor: const Color(0xFFF5F7FA),
+        appBar: AppBar(
+          title: Text(
+            'My Bookings',
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              color: Colors.white,
             ),
           ),
-          child: SafeArea(
-            child: Column(
-              children: [
-                // Premium header
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
-                  child: Row(
+          backgroundColor: const Color(0xFF00A896),
+          centerTitle: true,
+          elevation: 4,
+          shadowColor: Colors.black.withOpacity(0.1),
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
+        body: Column(
+          children: [
+            // Glassy card with rounded pill TabBar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+              child: _TabPillCard(
+                child: TabBar(
+                  isScrollable: true,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                  indicator: UnderlineTabIndicator(
+                    borderSide:
+                        BorderSide(color: Colors.teal.shade600, width: 3),
+                    insets: const EdgeInsets.symmetric(horizontal: 16),
+                  ),
+                  labelStyle: GoogleFonts.poppins(
+                      fontSize: 14, fontWeight: FontWeight.w700),
+                  unselectedLabelStyle: GoogleFonts.poppins(
+                      fontSize: 13, fontWeight: FontWeight.w500),
+                  labelColor: Colors.teal.shade800,
+                  unselectedLabelColor: Colors.grey.shade600,
+                  tabs: tabs
+                      .map((t) => Tab(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(t.$1, size: 18),
+                                const SizedBox(width: 6),
+                                Text(t.$2),
+                              ],
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+
+            // Content area
+            Expanded(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(20)),
+                child: Container(
+                  color: Colors.white,
+                  child: const TabBarView(
+                    physics: BouncingScrollPhysics(),
                     children: [
-                      Text(
-                        "My Bookings",
-                        style: GoogleFonts.poppins(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF064e46),
-                        ),
-                      ),
-                      const Spacer(),
-                      // Decorative icon
-                      // Container(
-                      //   padding: const EdgeInsets.all(10),
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.teal.withOpacity(.1),
-                      //     borderRadius: BorderRadius.circular(12),
-                      //   ),
-                      //   child: const Icon(Icons.event_note, color: Colors.teal),
-                      // ),
+                      TourBookingsList(),
+                      CarBookingsList(),
+                      HotelBookingsList(),
+                      HomestayBookingsList(),
+                      ApartmentBookingsList(),
+                      AdventureBookingsList(),
                     ],
                   ),
                 ),
-
-                // Glassy card with rounded pill TabBar
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 1, vertical: 8),
-                  child: _TabPillCard(
-                    child: TabBar(
-                      isScrollable: true,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      labelPadding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 6),
-                      indicator: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: Colors.teal.shade600,
-                          width: 3, // thickness of the bottom line
-                        ),
-                        insets: const EdgeInsets.symmetric(horizontal: 16),
-                      ),
-                      labelStyle: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      unselectedLabelStyle: GoogleFonts.poppins(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      labelColor: Colors.teal.shade800,
-                      unselectedLabelColor: Colors.grey.shade600,
-                      overlayColor:
-                          WidgetStateProperty.all(Colors.teal.withOpacity(.05)),
-                      tabs: tabs
-                          .map(
-                            (t) => Tab(
-                              iconMargin: const EdgeInsets.only(bottom: 3),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(t.$1, size: 18),
-                                  const SizedBox(width: 6),
-                                  Text(t.$2),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-
-                // Content area
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(18),
-                    ),
-                    child: Container(
-                      color: Colors.white,
-                      child: const TabBarView(
-                        physics: BouncingScrollPhysics(),
-                        children: [
-                          TourBookingsList(),
-                          CarBookingsList(),
-                          HotelBookingsList(),
-                          HomestayBookingsList(),
-                          ApartmentBookingsList(),
-                          AdventureBookingsList(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -153,7 +117,7 @@ class _TabPillCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(.8),
         borderRadius: BorderRadius.circular(14),

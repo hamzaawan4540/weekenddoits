@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weekenddoit/widgets/custom_appbar.dart';
 import 'package:weekenddoit/widgets/image_slider.dart';
 import '../data/dummy_packages.dart';
@@ -12,30 +12,82 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(logoAssetPath: 'assets/app_logo.png'),
+      backgroundColor: const Color(0xFFF5F7FA),
+      appBar:  CustomAppBar(logoAssetPath: 'assets/app_logo.png', size: 90,),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 12),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Hero/Welcome Section
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Explore the world",
+                    style: GoogleFonts.poppins(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                      color: const Color(0xFF1A1A1A),
+                      letterSpacing: -0.5,
+                    ),
+                  ),
+                  Text(
+                    "Discover your next adventure",
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             const SizedBox(height: 12),
 
-            // Use a separate widget that returns a shrink-wrapped GridView
+            // Category Grid
             const PremiumCategoryGridContent(),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
 
-            ImageSlider(imageUrls: sliderImages),
+            // Image Slider / Featured Offers
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: ImageSlider(imageUrls: sliderImages),
+            ),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
 
-            GridView.count(
-              crossAxisCount: 2,
+            // Popular Packages Section Header
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Popular Packages",
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF2D3436),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            // Tours Grid
+            GridView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio:
+                    0.72, // Increased height space to avoid overflow
+              ),
+              itemCount: dummyPackages.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 0.75,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              children: dummyPackages.map((tour) {
+              itemBuilder: (context, index) {
+                final tour = dummyPackages[index];
                 return TourCard(
                   tour: tour,
                   onTap: () {
@@ -47,10 +99,10 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                 );
-              }).toList(),
+              },
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
           ],
         ),
       ),

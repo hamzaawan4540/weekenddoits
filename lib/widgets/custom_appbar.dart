@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onSearchTap;
   final VoidCallback? onMyCashTap;
   final VoidCallback? onBizTap;
+  final double size;
 
   const CustomAppBar({
     super.key,
@@ -15,90 +16,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onSearchTap,
     this.onMyCashTap,
     this.onBizTap,
+    required this.size,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 91, 148, 234),
-      elevation: 1,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: InkWell(
-          onTap: onMenuTap ??
-              () => ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text("Menu tapped"))),
-          child: Row(
-            children: [
-              const Icon(Icons.menu, size: 20, color: Colors.black87),
-            ],
-          ),
-        ),
+      backgroundColor: const Color(0xFF00A896),
+      elevation: 4,
+      shadowColor: Colors.black.withOpacity(0.1),
+      centerTitle: true,
+      leading: IconButton(
+        icon: const Icon(Icons.menu_rounded, color: Colors.white, size: 28),
+        onPressed: onMenuTap ??
+            () => ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text("Menu"))),
       ),
-      title: Container(
-        constraints: const BoxConstraints(maxHeight: 48),
-        child: Image.asset(
-          logoAssetPath,
-          height: 100,
-          fit: BoxFit.contain,
-        ),
+      title: Image.asset(
+        logoAssetPath,
+        height: size,
+        fit: BoxFit.contain,
       ),
       actions: [
         IconButton(
           icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
-              color: Colors.black87, size: 18),
+              color: Colors.white, size: 22),
           onPressed: onSearchTap ??
               () => ScaffoldMessenger.of(context)
                   .showSnackBar(const SnackBar(content: Text("Search tapped"))),
         ),
-        // InkWell(
-        //   onTap: onMyCashTap ??
-        //       () => ScaffoldMessenger.of(context)
-        //           .showSnackBar(const SnackBar(content: Text("myCash tapped"))),
-        //   child: Padding(
-        //     padding: const EdgeInsets.symmetric(horizontal: 8),
-        //     child: Row(
-        //       children: const [
-        //         Text("my",
-        //             style: TextStyle(
-        //               fontWeight: FontWeight.w700,
-        //               fontSize: 14,
-        //               fontStyle: FontStyle.italic,
-        //               color: Colors.black87,
-        //             )),
-        //         Text("Cash",
-        //             style: TextStyle(
-        //               fontWeight: FontWeight.w400,
-        //               fontSize: 14,
-        //               color: Colors.black87,
-        //             )),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-        // InkWell(
-        //   onTap: onBizTap ??
-        //       () => ScaffoldMessenger.of(context)
-        //           .showSnackBar(const SnackBar(content: Text("Biz tapped"))),
-        //   child: Padding(
-        //     padding: const EdgeInsets.only(right: 12),
-        //     child: Row(
-        //       children: const [
-        //         FaIcon(
-        //           FontAwesomeIcons.briefcase,
-        //           size: 16,
-        //           color: Colors.deepOrangeAccent,
-        //         ),
-        //         SizedBox(width: 4),
-        //         Text("Biz",
-        //             style: TextStyle(
-        //                 fontSize: 14,
-        //                 fontWeight: FontWeight.w500,
-        //                 color: Colors.black87)),
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

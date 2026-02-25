@@ -15,11 +15,19 @@ class CarListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F8FA),
       appBar: AppBar(
-        title: Text('Cars in $location',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal.shade600,
-        elevation: 6,
+        title: Text(
+          'Cars in $location',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
         centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: StreamBuilder<List<Car>>(
         stream: _repo.streamCars(location: location), // 🔥 live from Firestore
@@ -152,8 +160,10 @@ class _CarListState extends State<_CarList> {
           icon: const Icon(Icons.car_rental),
           label: const Text('Book Now'),
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.teal,
-            disabledBackgroundColor: Colors.grey,
+            backgroundColor: const Color(0xFF00A896),
+            foregroundColor: Colors.white,
+            disabledBackgroundColor: Colors.grey.shade300,
+            disabledForegroundColor: Colors.grey.shade500,
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
             textStyle:
                 GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 16),

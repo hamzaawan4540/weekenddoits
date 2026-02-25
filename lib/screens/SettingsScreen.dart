@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'privacy_policy_page.dart';
@@ -15,47 +14,55 @@ class SettingsScreen extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F8FB),
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
         title: Text(
-          'Settings ⚙️',
+          'Settings',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w700,
-            fontSize: 22,
-            color: Colors.teal.shade700,
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         children: [
-          // 🌟 Premium looking header
+          // 👤 Premium Profile Header
           Container(
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.teal.shade400, Colors.teal.shade200],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(18),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: const Color(0xFFF1F2F6), width: 1.5),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.teal.withOpacity(0.2),
-                  blurRadius: 12,
-                  offset: const Offset(0, 6),
-                )
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 5,
+                  offset: const Offset(0, 5),
+                ),
               ],
             ),
-            padding: const EdgeInsets.all(18),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 35,
-                  backgroundColor: Colors.white.withOpacity(0.8),
-                  child: const Icon(Icons.person, size: 40, color: Colors.teal),
+                Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border:
+                        Border.all(color: const Color(0xFF00A896), width: 2),
+                  ),
+                  child: CircleAvatar(
+                    radius: 32,
+                    backgroundColor: const Color(0xFFE0F2F1),
+                    child: const Icon(Icons.person_rounded,
+                        size: 36, color: Color(0xFF00A896)),
+                  ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -63,21 +70,23 @@ class SettingsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        user?.phoneNumber ?? "Guest User",
+                        user?.phoneNumber ?? "Guest Traveler",
                         style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white,
+                          color: const Color(0xFF2D3436),
                         ),
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 2),
                       Text(
-                        user?.uid ?? "Not logged in",
+                        user == null
+                            ? "Sign in to sync your bookings"
+                            : "Verified Member",
                         style: GoogleFonts.poppins(
-                          fontSize: 13,
-                          color: Colors.white.withOpacity(0.9),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey.shade500,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
@@ -86,36 +95,51 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 30),
+          const SizedBox(height: 32),
 
-          // 🌸 Cute & Premium styled tiles
-          _buildCuteTile(
+          Text(
+            "GENERAL",
+            style: GoogleFonts.poppins(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: Colors.grey.shade400,
+              letterSpacing: 1.2,
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 📄 Privacy Policy
+          _buildPremiumTile(
             context,
-            icon: FontAwesomeIcons.userShield,
+            icon: Icons.security_rounded,
             title: 'Privacy Policy',
-            color: Colors.purpleAccent.shade100,
+            color: const Color(0xFF6C5CE7),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PrivacyPolicyPage()),
             ),
           ),
-          const SizedBox(height: 14),
-          _buildCuteTile(
+          const SizedBox(height: 12),
+
+          // 📄 Terms & Conditions
+          _buildPremiumTile(
             context,
-            icon: FontAwesomeIcons.fileContract,
+            icon: Icons.description_rounded,
             title: 'Terms & Conditions',
-            color: Colors.orangeAccent.shade100,
+            color: const Color(0xFFFDB147),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const TermsAndConditionsPage()),
             ),
           ),
-          const SizedBox(height: 14),
-          _buildCuteTile(
+          const SizedBox(height: 12),
+
+          // 📄 Help & Support
+          _buildPremiumTile(
             context,
-            icon: FontAwesomeIcons.lifeRing,
+            icon: Icons.help_center_rounded,
             title: 'Help & Support',
-            color: Colors.lightBlueAccent.shade100,
+            color: const Color(0xFF00B894),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const HelpSupportPage()),
@@ -126,55 +150,59 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCuteTile(
+  Widget _buildPremiumTile(
     BuildContext context, {
     required IconData icon,
     required String title,
     required Color color,
     required VoidCallback onTap,
   }) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(16),
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12.withOpacity(0.05),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: FaIcon(icon, color: Colors.teal.shade700, size: 18),
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Text(
-                title,
-                style: GoogleFonts.poppins(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFFF1F2F6), width: 1.2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(18),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.12),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Icon(icon, color: color, size: 22),
                 ),
-              ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: GoogleFonts.poppins(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF2D3436),
+                    ),
+                  ),
+                ),
+                Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400),
+              ],
             ),
-            const Icon(Icons.chevron_right, color: Colors.teal),
-          ],
+          ),
         ),
       ),
     );

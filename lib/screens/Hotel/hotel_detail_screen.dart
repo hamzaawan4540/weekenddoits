@@ -14,9 +14,19 @@ class HotelDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F8FA),
       appBar: AppBar(
-        title: Text(hotel.name,
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+        title: Text(
+          hotel.name,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -122,14 +132,18 @@ class HotelDetailScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => _openBookingSheet(context),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.teal,
+              backgroundColor: const Color(0xFF00A896),
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               textStyle: GoogleFonts.poppins(
                   fontSize: 16, fontWeight: FontWeight.w600),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14)),
             ),
-            child: const Text('Select Room & Book'),
+            child: const Text(
+              'Select Room & Book',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),

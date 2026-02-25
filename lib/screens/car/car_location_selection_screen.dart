@@ -19,11 +19,17 @@ class CarLocationSelectionScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Select Pickup Location',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: Colors.teal.shade600,
-        elevation: 6,
+        backgroundColor: const Color(0xFF00A896),
         centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

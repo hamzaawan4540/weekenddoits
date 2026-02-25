@@ -17,33 +17,27 @@ class PremiumCategoryGridContent extends StatelessWidget {
   static const List<_CategoryItem> categories = [
     _CategoryItem(
       title: 'Hotel',
-      // Service Bell (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=1sKGpz9F5DnT&format=png',
+      assetPath: 'assets/3d icon/hotel.png',
     ),
     _CategoryItem(
       title: 'Homestay',
-      // Home (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=iJzm3AFQCS4W&format=png',
+      assetPath: 'assets/3d icon/home.png',
     ),
     _CategoryItem(
       title: 'Apartment',
-      // School Building (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=XAg8ooTyo7Dl&format=png',
+      assetPath: 'assets/3d icon/apartment.png',
     ),
     _CategoryItem(
       title: 'Travel Package',
-      // Suitcase (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=OzQUBn0YVaV9&format=png',
+      assetPath: 'assets/3d icon/travel.png',
     ),
     _CategoryItem(
       title: 'Cab',
-      // Taxi (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=Q2m4bLp5g5kF&format=png',
+      assetPath: 'assets/3d icon/taxi.png',
     ),
     _CategoryItem(
       title: 'Adventure Activities',
-      // Mountain (3D Fluency)
-      networkUrl: 'https://img.icons8.com/?size=96&id=1i1OucArxwqF&format=png',
+      assetPath: 'assets/3d icon/adventure.png',
     ),
   ];
 
@@ -59,14 +53,14 @@ class PremiumCategoryGridContent extends StatelessWidget {
           crossAxisCount: 3,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
-          // Slightly taller to avoid vertical overflow on 2-line labels
-          childAspectRatio: 0.9,
+          // Adjusted ratio for larger icons
+          childAspectRatio: 0.82,
         ),
         itemBuilder: (context, index) {
           final cat = categories[index];
           return _PremiumCategoryCard(
             title: cat.title,
-            networkUrl: cat.networkUrl,
+            assetPath: cat.assetPath,
             onTap: () {
               switch (cat.title.toLowerCase()) {
                 case 'hotel':
@@ -126,93 +120,84 @@ class PremiumCategoryGridContent extends StatelessWidget {
 
 class _CategoryItem {
   final String title;
-  final String networkUrl;
+  final String assetPath;
 
   const _CategoryItem({
     required this.title,
-    required this.networkUrl,
+    required this.assetPath,
   });
 }
 
 class _PremiumCategoryCard extends StatelessWidget {
   final String title;
-  final String networkUrl;
+  final String assetPath;
   final VoidCallback onTap;
 
   const _PremiumCategoryCard({
     super.key,
     required this.title,
-    required this.networkUrl,
+    required this.assetPath,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    const double iconSize = 56;
+    const double iconSize = 58;
 
-    return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12),
-      elevation: 1,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Network image with loading & error handling
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  networkUrl,
-                  width: iconSize,
-                  height: iconSize,
-                  fit: BoxFit.contain,
-                  loadingBuilder: (context, child, progress) {
-                    if (progress == null) return child;
-                    return SizedBox(
-                      width: iconSize,
-                      height: iconSize,
-                      child: const Center(
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      ),
-                    );
-                  },
-                  errorBuilder: (context, error, stack) => Container(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFF1F2F6), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.07),
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    assetPath,
                     width: iconSize,
                     height: iconSize,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Icon(
-                      Icons.image_not_supported,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stack) => const Icon(
+                      Icons.image_not_supported_rounded,
                       color: Colors.grey,
-                      size: 28,
+                      size: 24,
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              // Flexible text to prevent RenderFlex overflows
-              Flexible(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    height: 1.2,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                const SizedBox(height: 8),
+                Flexible(
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF2D3436),
+                      height: 1.1,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

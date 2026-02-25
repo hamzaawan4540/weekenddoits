@@ -68,11 +68,19 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F9FC),
       appBar: AppBar(
-        title: Text('Booking - ${widget.car.name}',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal.shade600,
-        elevation: 5,
+        title: Text(
+          'Booking - ${widget.car.name}',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
         centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -135,7 +143,7 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
                     : const Icon(Icons.check_circle_outline),
                 label: Text(_saving ? 'Saving...' : 'Confirm Booking'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: const Color(0xFF00A896),
                   foregroundColor: Colors.white,
                   elevation: 4,
                   padding: const EdgeInsets.symmetric(vertical: 16),

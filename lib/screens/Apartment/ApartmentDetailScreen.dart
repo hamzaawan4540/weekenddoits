@@ -13,9 +13,19 @@ class ApartmentDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F9FB),
       appBar: AppBar(
-        title: Text(apartment.title,
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+        title: Text(
+          apartment.title,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -134,7 +144,8 @@ class ApartmentDetailScreen extends StatelessWidget {
             icon: const Icon(Icons.book),
             label: const Text('Book Apartment'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.teal,
+              backgroundColor: const Color(0xFF00A896),
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               textStyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600, fontSize: 16),

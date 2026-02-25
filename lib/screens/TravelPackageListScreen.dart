@@ -14,63 +14,81 @@ class TravelPackageListScreen extends StatelessWidget {
     final repo = TravelPackageRepository();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F8FA),
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
         title: Text(
-          'Travel Packages',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          'Available Packages',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: const Color(0xFF00A896),
         centerTitle: true,
-        elevation: 5,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-        child: StreamBuilder<List<TourPackage>>(
-          stream: repo.streamPackages(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}',
-                    style: GoogleFonts.poppins()),
-              );
-            }
-            final items = snapshot.data ?? const [];
-            if (items.isEmpty) {
-              return Center(
-                child: Text(
-                  'No packages found.\nSeeding will run automatically on first launch.',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(fontSize: 14),
-                ),
-              );
-            }
-
-            return GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              childAspectRatio: 0.75,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 12,
-              children: items.map((tour) {
-                return TourCard(
-                  tour: tour,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => DetailScreen(tour: tour)),
-                    );
-                  },
-                );
-              }).toList(),
+      body: StreamBuilder<List<TourPackage>>(
+        stream: repo.streamPackages(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF00A896)));
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}',
+                  style: GoogleFonts.poppins()),
             );
-          },
-        ),
+          }
+          final items = snapshot.data ?? const [];
+          if (items.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.search_off_rounded,
+                      size: 64, color: Colors.grey.shade400),
+                  const SizedBox(height: 16),
+                  Text(
+                    'No packages found at the moment.',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.fromLTRB(10, 16, 10, 32),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.72,
+              crossAxisSpacing: 4,
+              mainAxisSpacing: 4,
+            ),
+            itemCount: items.length,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              final tour = items[index];
+              return TourCard(
+                tour: tour,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => DetailScreen(tour: tour)),
+                  );
+                },
+              );
+            },
+          );
+        },
       ),
     );
   }

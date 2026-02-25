@@ -31,17 +31,24 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F8FA),
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        elevation: 0,
-        title: Text('Homestays',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+        title: Text(
+          'Homestays',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
         centerTitle: true,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
           // top search / filters
           Container(
-            color: Colors.teal,
+            color: const Color(0xFF00A896),
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
             child: Row(
               children: [
@@ -232,39 +239,6 @@ class _HomestayCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 11.5,
                       ),
-                    ),
-                  ),
-                ),
-                // rating chip
-                Positioned(
-                  right: 10,
-                  top: 10,
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(999),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12.withOpacity(.06),
-                          blurRadius: 8,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.star, size: 14, color: Colors.amber),
-                        const SizedBox(width: 4),
-                        Text(
-                          homestay.rating.toStringAsFixed(1),
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ),

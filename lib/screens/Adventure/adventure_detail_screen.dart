@@ -12,9 +12,19 @@ class AdventureDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F7F9),
       appBar: AppBar(
-        title: Text(activity.title,
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+        title: Text(
+          activity.title,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
@@ -48,7 +58,8 @@ class AdventureDetailScreen extends StatelessWidget {
             icon: const Icon(Icons.directions_run),
             label: const Text("Book This Adventure"),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.teal,
+              backgroundColor: const Color(0xFF00A896),
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
               textStyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600, fontSize: 16),

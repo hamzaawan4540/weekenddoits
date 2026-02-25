@@ -106,9 +106,19 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Adventure",
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+        title: Text(
+          "Book Adventure",
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF00A896),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -151,7 +161,7 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
                 child: FilledButton.icon(
                   onPressed: _saving ? null : _submit,
                   style: FilledButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: const Color(0xFF00A896),
                     foregroundColor: Colors.white,
                   ),
                   icon: _saving
