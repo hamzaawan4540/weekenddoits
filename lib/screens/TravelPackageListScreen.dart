@@ -24,10 +24,9 @@ class TravelPackageListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: StreamBuilder<List<TourPackage>>(
@@ -35,7 +34,7 @@ class TravelPackageListScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-                child: CircularProgressIndicator(color: Color(0xFF00A896)));
+                child: CircularProgressIndicator(color: Color(0xFF5D78FF)));
           }
           if (snapshot.hasError) {
             return Center(

@@ -23,17 +23,17 @@ class AdventureListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: StreamBuilder<List<Activity>>(
         stream: repo.streamActivities(), // 🔥 Live from Firestore
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF5D78FF)));
           }
           if (snap.hasError) {
             return Center(
@@ -114,7 +114,7 @@ class AdventureListScreen extends StatelessWidget {
                               Text('₹${a.price}',
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.teal.shade800)),
+                                      color: const Color(0xFF5D78FF))),
                               Text(a.duration,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,

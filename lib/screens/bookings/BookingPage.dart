@@ -36,10 +36,9 @@ class BookingPage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          backgroundColor: const Color(0xFF00A896),
+          backgroundColor: const Color(0xFFE67E22), // Matching home header
           centerTitle: true,
-          elevation: 4,
-          shadowColor: Colors.black.withOpacity(0.1),
+          elevation: 0, // Flat look for modern vibe
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: Column(
@@ -55,14 +54,14 @@ class BookingPage extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   indicator: UnderlineTabIndicator(
                     borderSide:
-                        BorderSide(color: Colors.teal.shade600, width: 3),
+                        const BorderSide(color: Color(0xFF5D78FF), width: 3),
                     insets: const EdgeInsets.symmetric(horizontal: 16),
                   ),
                   labelStyle: GoogleFonts.poppins(
                       fontSize: 14, fontWeight: FontWeight.w700),
                   unselectedLabelStyle: GoogleFonts.poppins(
                       fontSize: 13, fontWeight: FontWeight.w500),
-                  labelColor: Colors.teal.shade800,
+                  labelColor: const Color(0xFF5D78FF),
                   unselectedLabelColor: Colors.grey.shade600,
                   tabs: tabs
                       .map((t) => Tab(
@@ -123,12 +122,12 @@ class _TabPillCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: Colors.teal.withOpacity(.08),
+            color: const Color(0xFF5D78FF).withOpacity(.08),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
         ],
-        border: Border.all(color: Colors.teal.withOpacity(.08)),
+        border: Border.all(color: const Color(0xFF5D78FF).withOpacity(.08)),
       ),
       child: child,
     );

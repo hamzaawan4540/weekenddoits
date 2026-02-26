@@ -29,10 +29,9 @@ class _DetailScreenState extends State<DetailScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -60,41 +59,50 @@ class _DetailScreenState extends State<DetailScreen> {
             const SizedBox(height: 4),
             Row(
               children: [
-                const Icon(Icons.location_on, size: 18, color: Colors.teal),
-                const SizedBox(width: 6),
+                const Icon(Icons.location_on,
+                    size: 18, color: Color(0xFF5D78FF)),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     tour.location,
-                    style: GoogleFonts.poppins(color: Colors.grey[600]),
+                    style: GoogleFonts.poppins(
+                        color: Colors.grey[600], fontSize: 13),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Row(
               children: [
-                const Icon(Icons.timer, size: 18, color: Colors.teal),
-                const SizedBox(width: 6),
+                const Icon(Icons.timer, size: 18, color: Color(0xFF5D78FF)),
+                const SizedBox(width: 8),
                 Text(
                   tour.duration,
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600, fontSize: 13),
                 ),
               ],
             ),
             const SizedBox(height: 24),
             _sectionTitle("Description"),
-            Text(tour.description, style: GoogleFonts.poppins(fontSize: 14)),
+            const SizedBox(height: 8),
+            Text(tour.description,
+                style: GoogleFonts.poppins(
+                    fontSize: 14, color: Colors.grey.shade700, height: 1.6)),
             const SizedBox(height: 24),
             _sectionTitle("Highlights"),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             ...tour.highlights.map((item) => Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
                     children: [
                       const Icon(Icons.check_circle,
-                          size: 18, color: Colors.teal),
-                      const SizedBox(width: 10),
-                      Expanded(child: Text(item, style: GoogleFonts.poppins())),
+                          size: 18, color: Color(0xFF5D78FF)),
+                      const SizedBox(width: 12),
+                      Expanded(
+                          child: Text(item,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, color: Colors.grey.shade800))),
                     ],
                   ),
                 )),
@@ -126,7 +134,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 40,
                       margin: const EdgeInsets.only(right: 12),
                       decoration: BoxDecoration(
-                        color: Colors.teal.shade100,
+                        color: const Color(0xFF5D78FF).withOpacity(0.12),
                         shape: BoxShape.circle,
                       ),
                       alignment: Alignment.center,
@@ -134,7 +142,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         "${index + 1}",
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
-                          color: Colors.teal.shade900,
+                          color: const Color(0xFF5D78FF),
                         ),
                       ),
                     ),
@@ -159,11 +167,12 @@ class _DetailScreenState extends State<DetailScreen> {
           height: 50,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00A896),
+              backgroundColor: const Color(0xFF5D78FF),
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
               ),
+              elevation: 0,
             ),
             onPressed: _onBookNowPressed,
             child: const Text(
@@ -348,10 +357,10 @@ class _BookingSheetState extends State<_BookingSheet> {
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                 ),
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF00A896),
+                  backgroundColor: const Color(0xFF5D78FF),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
@@ -364,9 +373,13 @@ class _BookingSheetState extends State<_BookingSheet> {
 
   InputDecoration _input(String label) => InputDecoration(
         labelText: label,
+        labelStyle: GoogleFonts.poppins(fontSize: 14),
         filled: true,
-        fillColor: Colors.teal.shade50,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
       );
 
   String? _validateCount(String? v) {

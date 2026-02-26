@@ -26,10 +26,9 @@ class HomestayDetailScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -111,10 +110,11 @@ class HomestayDetailScreen extends StatelessWidget {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF00A896),
+                          backgroundColor: const Color(0xFF5D78FF),
                           foregroundColor: Colors.white,
+                          elevation: 0,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                              borderRadius: BorderRadius.circular(16)),
                         ),
                         onPressed: () async {
                           final user = FirebaseAuth.instance.currentUser;
@@ -183,9 +183,12 @@ class _Amenity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      label: Text(label),
-      avatar: FaIcon(icon, size: 14),
-      backgroundColor: Colors.teal.shade50,
+      label: Text(label,
+          style: GoogleFonts.poppins(
+              fontSize: 12, color: const Color(0xFF5D78FF))),
+      avatar: FaIcon(icon, size: 14, color: const Color(0xFF5D78FF)),
+      backgroundColor: const Color(0xFF5D78FF).withOpacity(0.1),
+      side: BorderSide.none,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     );
   }
@@ -275,10 +278,10 @@ class _PhoneLoginSheetState extends State<_PhoneLoginSheet> {
                         }
                       },
                 style: FilledButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: const Color(0xFF5D78FF),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12))),
+                        borderRadius: BorderRadius.circular(16))),
                 child: _busy
                     ? const SizedBox(
                         width: 20,
@@ -298,9 +301,13 @@ class _PhoneLoginSheetState extends State<_PhoneLoginSheet> {
 
   InputDecoration _dec(String l) => InputDecoration(
         labelText: l,
+        labelStyle: GoogleFonts.poppins(fontSize: 14),
         filled: true,
-        fillColor: Colors.teal.shade50,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
       );
 
   Future<void> _start() async {
@@ -504,10 +511,10 @@ class _HomestayBookingSheetState extends State<_HomestayBookingSheet> {
                         style:
                             GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                     style: FilledButton.styleFrom(
-                      backgroundColor: Colors.teal,
+                      backgroundColor: const Color(0xFF5D78FF),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(16)),
                     ),
                   ),
                 ),
@@ -519,9 +526,13 @@ class _HomestayBookingSheetState extends State<_HomestayBookingSheet> {
 
   InputDecoration _dec(String label) => InputDecoration(
         labelText: label,
+        labelStyle: GoogleFonts.poppins(fontSize: 14),
         filled: true,
-        fillColor: Colors.teal.shade50,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
       );
 
   Widget _dateTile(String label, DateTime? value, VoidCallback onTap) {
@@ -533,18 +544,19 @@ class _HomestayBookingSheetState extends State<_HomestayBookingSheet> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: Colors.teal.shade50,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.teal.shade100),
+          color: const Color(0xFF5D78FF).withOpacity(0.05),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: const Color(0xFF5D78FF).withOpacity(0.1)),
         ),
         child: Row(
           children: [
-            const Icon(Icons.calendar_today, color: Colors.teal),
+            const Icon(Icons.calendar_today,
+                color: Color(0xFF5D78FF), size: 18),
             const SizedBox(width: 10),
             Expanded(
                 child: Text('$label: $txt',
                     style: GoogleFonts.poppins(fontSize: 14))),
-            const Icon(Icons.edit_calendar, color: Colors.teal),
+            const Icon(Icons.edit_calendar, color: Color(0xFF5D78FF), size: 18),
           ],
         ),
       ),

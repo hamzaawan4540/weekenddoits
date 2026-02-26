@@ -24,10 +24,9 @@ class SettingsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
@@ -55,13 +54,13 @@ class SettingsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border:
-                        Border.all(color: const Color(0xFF00A896), width: 2),
+                        Border.all(color: const Color(0xFF5D78FF), width: 2),
                   ),
                   child: CircleAvatar(
                     radius: 32,
-                    backgroundColor: const Color(0xFFE0F2F1),
+                    backgroundColor: const Color(0xFF5D78FF).withOpacity(0.1),
                     child: const Icon(Icons.person_rounded,
-                        size: 36, color: Color(0xFF00A896)),
+                        size: 36, color: Color(0xFF5D78FF)),
                   ),
                 ),
                 const SizedBox(width: 16),

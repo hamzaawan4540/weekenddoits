@@ -57,8 +57,10 @@ class _CarUploaderScreenState extends State<CarUploaderScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Upload Cars',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600, color: Colors.white)),
+        backgroundColor: const Color(0xFFE67E22),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -72,7 +74,7 @@ class _CarUploaderScreenState extends State<CarUploaderScreen> {
               icon: const Icon(Icons.cloud_upload),
               label: const Text('Upload All'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+                backgroundColor: const Color(0xFF5D78FF),
                 foregroundColor: Colors.white,
               ),
             ),
@@ -89,8 +91,8 @@ class _CarUploaderScreenState extends State<CarUploaderScreen> {
           LinearProgressIndicator(
             value: isUploading ? progress : null,
             minHeight: 8,
-            backgroundColor: Colors.teal.shade50,
-            color: Colors.teal,
+            backgroundColor: const Color(0xFF5D78FF).withOpacity(0.1),
+            color: const Color(0xFF5D78FF),
           ),
           const SizedBox(height: 8),
           Text('Items: $total', style: GoogleFonts.poppins()),

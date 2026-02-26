@@ -23,7 +23,7 @@ class CarListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22),
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.1),
@@ -86,7 +86,9 @@ class _CarListState extends State<_CarList> {
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: isSelected ? Colors.teal.shade50 : Colors.white,
+                    color: isSelected
+                        ? const Color(0xFF5D78FF).withOpacity(0.1)
+                        : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -96,7 +98,9 @@ class _CarListState extends State<_CarList> {
                       ),
                     ],
                     border: Border.all(
-                      color: isSelected ? Colors.teal : Colors.transparent,
+                      color: isSelected
+                          ? const Color(0xFF5D78FF)
+                          : Colors.transparent,
                       width: 2,
                     ),
                   ),
@@ -134,7 +138,8 @@ class _CarListState extends State<_CarList> {
                         ),
                       ),
                       if (isSelected)
-                        const Icon(Icons.check_circle, color: Colors.teal),
+                        const Icon(Icons.check_circle,
+                            color: Color(0xFF5D78FF)),
                     ],
                   ),
                 ),
@@ -160,7 +165,7 @@ class _CarListState extends State<_CarList> {
           icon: const Icon(Icons.car_rental),
           label: const Text('Book Now'),
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF00A896),
+            backgroundColor: const Color(0xFF5D78FF),
             foregroundColor: Colors.white,
             disabledBackgroundColor: Colors.grey.shade300,
             disabledForegroundColor: Colors.grey.shade500,

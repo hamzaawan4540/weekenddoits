@@ -76,7 +76,7 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22),
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.1),
@@ -143,7 +143,7 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
                     : const Icon(Icons.check_circle_outline),
                 label: Text(_saving ? 'Saving...' : 'Confirm Booking'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00A896),
+                  backgroundColor: const Color(0xFF5D78FF),
                   foregroundColor: Colors.white,
                   elevation: 4,
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -174,7 +174,7 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
         labelText: label,
         labelStyle: GoogleFonts.poppins(),
         filled: true,
-        fillColor: Colors.teal.shade50,
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -192,20 +192,20 @@ class _CarBookingDetailScreenState extends State<CarBookingDetailScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: Colors.teal.shade50,
+          color: const Color(0xFF5D78FF).withOpacity(0.05),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.teal.shade100),
+          border: Border.all(color: const Color(0xFF5D78FF).withOpacity(0.1)),
         ),
         child: Row(
           children: [
-            Icon(icon, color: Colors.teal),
+            Icon(icon, color: const Color(0xFF5D78FF)),
             const SizedBox(width: 12),
             Expanded(
               child: Text('$label: $value',
                   style: GoogleFonts.poppins(
                       fontSize: 15, color: Colors.grey.shade800)),
             ),
-            const Icon(Icons.edit_calendar, color: Colors.teal),
+            const Icon(Icons.edit_calendar, color: Color(0xFF5D78FF)),
           ],
         ),
       ),

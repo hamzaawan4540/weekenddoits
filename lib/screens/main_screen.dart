@@ -26,22 +26,22 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
+        decoration: const BoxDecoration(
+          color: Color(0xFF1B1E28), // Dark Navy/Charcoal from image
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 5,
-              offset: const Offset(0, -5),
+              color: Colors.black26,
+              blurRadius: 10,
+              offset: Offset(0, -2),
             ),
           ],
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) => setState(() => _currentIndex = index),
-          selectedItemColor: const Color(0xFF00A896),
-          unselectedItemColor: Colors.grey.shade400,
-          backgroundColor: Colors.white,
+          selectedItemColor: const Color(0xFF5D78FF),
+          unselectedItemColor: Colors.white,
+          backgroundColor: const Color(0xFF1B1E28), // Match the container color
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           selectedFontSize: 12,
@@ -50,30 +50,26 @@ class _MainScreenState extends State<MainScreen> {
               const TextStyle(fontWeight: FontWeight.w700, height: 1.5),
           unselectedLabelStyle:
               const TextStyle(fontWeight: FontWeight.w500, height: 1.5),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded, size: 24),
-              activeIcon: Icon(Icons.home_rounded, size: 28),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_rounded, size: 24),
-              activeIcon: Icon(Icons.calendar_month_rounded, size: 28),
-              label: 'Booking',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.card_travel_rounded, size: 24),
-              activeIcon: Icon(Icons.card_travel_rounded, size: 28),
-              label: 'Tour',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_rounded, size: 24),
-              activeIcon: Icon(Icons.settings_rounded, size: 28),
-              label: 'Settings',
-            ),
+          items: [
+            _buildNavItem(Icons.home_rounded, 'Home', 0),
+            _buildNavItem(Icons.calendar_month_rounded, 'Booking', 1),
+            _buildNavItem(Icons.card_travel_rounded, 'Tour', 2),
+            _buildNavItem(Icons.settings_rounded, 'Settings', 3),
           ],
         ),
       ),
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(
+      IconData icon, String label, int index) {
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: const EdgeInsets.only(bottom: 4),
+        child: Icon(icon, size: 24),
+      ),
+      activeIcon: Icon(icon, size: 26, color: const Color(0xFF5D78FF)),
+      label: label,
     );
   }
 }

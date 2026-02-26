@@ -20,10 +20,9 @@ class AdventureDetailScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
@@ -43,9 +42,9 @@ class AdventureDetailScreen extends StatelessWidget {
               style: GoogleFonts.poppins(color: Colors.grey[700])),
           Text("₹${activity.price}",
               style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.teal)),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF5D78FF))),
           const SizedBox(height: 20),
           Text("About",
               style: GoogleFonts.poppins(
@@ -58,13 +57,14 @@ class AdventureDetailScreen extends StatelessWidget {
             icon: const Icon(Icons.directions_run),
             label: const Text("Book This Adventure"),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00A896),
+              backgroundColor: const Color(0xFF5D78FF),
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
               textStyle: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600, fontSize: 16),
+                  fontWeight: FontWeight.w700, fontSize: 16),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(16)),
+              elevation: 0,
             ),
             onPressed: () {
               Navigator.push(

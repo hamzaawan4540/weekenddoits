@@ -7,6 +7,8 @@ class TourPackage {
   final String description;
   final List<String> highlights;
   final List<String> itinerary;
+  final double price; // Price in currency
+  final double rating; // Rating out of 5
 
   const TourPackage({
     required this.id,
@@ -17,6 +19,8 @@ class TourPackage {
     required this.description,
     required this.highlights,
     required this.itinerary,
+    required this.price,
+    this.rating = 4.5,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +32,8 @@ class TourPackage {
       'description': description,
       'highlights': highlights,
       'itinerary': itinerary,
+      'price': price,
+      'rating': rating,
       'createdAt': DateTime.now().toUtc(),
     };
   }
@@ -42,6 +48,8 @@ class TourPackage {
       description: map['description'] ?? '',
       highlights: (map['highlights'] as List?)?.cast<String>() ?? const [],
       itinerary: (map['itinerary'] as List?)?.cast<String>() ?? const [],
+      price: (map['price'] as num?)?.toDouble() ?? 0.0,
+      rating: (map['rating'] as num?)?.toDouble() ?? 4.5,
     );
   }
 }

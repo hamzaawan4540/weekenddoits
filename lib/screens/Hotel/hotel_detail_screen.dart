@@ -22,10 +22,9 @@ class HotelDetailScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
@@ -85,8 +84,12 @@ class HotelDetailScreen extends StatelessWidget {
             children: hotel.amenities
                 .map((amenity) => Chip(
                       label: Text(amenity,
-                          style: GoogleFonts.poppins(fontSize: 12)),
-                      backgroundColor: Colors.teal.shade50,
+                          style: GoogleFonts.poppins(
+                              fontSize: 12, color: const Color(0xFF5D78FF))),
+                      backgroundColor: const Color(0xFF5D78FF).withOpacity(0.1),
+                      side: BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
                     ))
                 .toList(),
           ),
@@ -113,7 +116,7 @@ class HotelDetailScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.king_bed, color: Colors.teal),
+                      const Icon(Icons.king_bed, color: Color(0xFF5D78FF)),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(room.name,
@@ -132,13 +135,14 @@ class HotelDetailScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => _openBookingSheet(context),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00A896),
+              backgroundColor: const Color(0xFF5D78FF),
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               textStyle: GoogleFonts.poppins(
                   fontSize: 16, fontWeight: FontWeight.w600),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(16)),
+              elevation: 0,
             ),
             child: const Text(
               'Select Room & Book',
@@ -295,8 +299,12 @@ class _HotelBookingSheetState extends State<_HotelBookingSheet> {
                     style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: const Color(0xFF5D78FF),
                     foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 0,
                   ),
                 ),
               )
@@ -309,10 +317,12 @@ class _HotelBookingSheetState extends State<_HotelBookingSheet> {
 
   InputDecoration _input(String label) => InputDecoration(
         labelText: label,
+        labelStyle: GoogleFonts.poppins(fontSize: 14),
         filled: true,
-        fillColor: Colors.teal.shade50,
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
         ),
       );
 }

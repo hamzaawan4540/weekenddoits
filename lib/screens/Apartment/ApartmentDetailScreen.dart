@@ -21,10 +21,9 @@ class ApartmentDetailScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(
@@ -59,8 +58,8 @@ class ApartmentDetailScreen extends StatelessWidget {
                   fontSize: 24, fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Row(children: [
-            const Icon(Icons.location_on, color: Colors.teal),
-            const SizedBox(width: 6),
+            const Icon(Icons.location_on, color: Color(0xFF5D78FF), size: 18),
+            const SizedBox(width: 8),
             Expanded(
               child: Text(apartment.location,
                   style: GoogleFonts.poppins(fontSize: 14)),
@@ -68,8 +67,8 @@ class ApartmentDetailScreen extends StatelessWidget {
             Text('₹${apartment.pricePerMonth}/mo',
                 style: GoogleFonts.poppins(
                     fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.teal.shade800)),
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF5D78FF))),
           ]),
           const SizedBox(height: 20),
 
@@ -82,7 +81,7 @@ class ApartmentDetailScreen extends StatelessWidget {
               return Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, color: Colors.teal, size: 20),
+                  Icon(icon, color: const Color(0xFF5D78FF), size: 20),
                   const SizedBox(width: 6),
                   Text(e.value, style: GoogleFonts.poppins(fontSize: 13)),
                 ],
@@ -125,8 +124,13 @@ class ApartmentDetailScreen extends StatelessWidget {
               'Furnished'
             ]
                 .map((a) => Chip(
-                      label: Text(a),
-                      backgroundColor: Colors.tealAccent.withOpacity(0.2),
+                      label: Text(a,
+                          style: GoogleFonts.poppins(
+                              fontSize: 12, color: const Color(0xFF5D78FF))),
+                      backgroundColor: const Color(0xFF5D78FF).withOpacity(0.1),
+                      side: BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
                     ))
                 .toList(),
           ),
@@ -144,13 +148,14 @@ class ApartmentDetailScreen extends StatelessWidget {
             icon: const Icon(Icons.book),
             label: const Text('Book Apartment'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00A896),
+              backgroundColor: const Color(0xFF5D78FF),
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               textStyle: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600, fontSize: 16),
+                  fontWeight: FontWeight.w700, fontSize: 16),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(16)),
+              elevation: 0,
             ),
             onPressed: () {
               Navigator.push(

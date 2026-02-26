@@ -25,7 +25,7 @@ class CarLocationSelectionScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22),
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.1),
@@ -38,12 +38,12 @@ class CarLocationSelectionScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
               decoration: BoxDecoration(
-                color: Colors.teal.shade50,
+                color: const Color(0xFF5D78FF).withOpacity(0.05),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.location_on, color: Colors.teal),
+                  const Icon(Icons.location_on, color: Color(0xFF5D78FF)),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
@@ -64,17 +64,18 @@ class CarLocationSelectionScreen extends StatelessWidget {
                   return Material(
                     elevation: 4,
                     borderRadius: BorderRadius.circular(16),
-                    shadowColor: Colors.teal.shade100,
+                    shadowColor: const Color(0xFF5D78FF).withOpacity(0.1),
                     color: Colors.white,
                     child: ListTile(
-                      leading: const Icon(Icons.place, color: Colors.teal),
+                      leading:
+                          const Icon(Icons.place, color: Color(0xFF5D78FF)),
                       title: Text(
                         locations[index],
                         style: GoogleFonts.poppins(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
-                      trailing:
-                          const Icon(Icons.chevron_right, color: Colors.teal),
+                      trailing: const Icon(Icons.chevron_right,
+                          color: Color(0xFF5D78FF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),

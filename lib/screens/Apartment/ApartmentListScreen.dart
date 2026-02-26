@@ -22,9 +22,9 @@ class ApartmentListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
+        elevation: 0,
         shadowColor: Colors.black.withOpacity(0.1),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -32,7 +32,8 @@ class ApartmentListScreen extends StatelessWidget {
         stream: _repo.streamApartments(),
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF5D78FF)));
           }
           if (snap.hasError) {
             return Center(child: Text('Error: ${snap.error}'));
@@ -127,7 +128,7 @@ class ApartmentListScreen extends StatelessWidget {
                               Text('₹${apt.pricePerMonth}/mo',
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.teal.shade800)),
+                                      color: const Color(0xFF5D78FF))),
                             ],
                           ),
                         ),

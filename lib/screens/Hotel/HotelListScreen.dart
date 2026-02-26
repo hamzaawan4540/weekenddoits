@@ -20,10 +20,9 @@ class HotelListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
@@ -32,7 +31,8 @@ class HotelListScreen extends StatelessWidget {
           stream: HotelRepository().streamHotels(), // 🔥 live Firestore stream
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(color: Color(0xFF5D78FF)));
             }
             if (snapshot.hasError) {
               return Center(
@@ -131,7 +131,7 @@ class HotelListScreen extends StatelessWidget {
                                     '₹${h.pricePerNight.toStringAsFixed(0)}',
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.teal.shade800,
+                                      color: const Color(0xFF5D78FF),
                                     ),
                                   ),
                                 ],

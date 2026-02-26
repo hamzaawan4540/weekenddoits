@@ -47,10 +47,9 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
-        elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -100,7 +99,7 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
                     style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                   ),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF00A896),
+                    backgroundColor: const Color(0xFF5D78FF), // Primary Blue
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -118,7 +117,7 @@ class _HelpSupportPageState extends State<HelpSupportPage> {
   InputDecoration _dec(String label) => InputDecoration(
         labelText: label,
         filled: true,
-        fillColor: Colors.teal.shade50,
+        fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       );
 

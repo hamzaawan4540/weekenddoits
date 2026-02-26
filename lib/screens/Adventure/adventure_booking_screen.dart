@@ -114,7 +114,7 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22),
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.1),
@@ -131,14 +131,28 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
               const SizedBox(height: 12),
               TextFormField(
                 controller: nameController,
-                decoration: const InputDecoration(labelText: "Your Name"),
+                decoration: InputDecoration(
+                  labelText: "Your Name",
+                  filled: true,
+                  fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none),
+                ),
                 validator: (v) =>
                     (v == null || v.trim().isEmpty) ? "Enter name" : null,
               ),
               const SizedBox(height: 12),
               TextFormField(
                 controller: phoneController,
-                decoration: const InputDecoration(labelText: "Phone Number"),
+                decoration: InputDecoration(
+                  labelText: "Phone Number",
+                  filled: true,
+                  fillColor: const Color(0xFF5D78FF).withOpacity(0.05),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none),
+                ),
                 keyboardType: TextInputType.phone,
                 validator: (v) {
                   final t = v?.trim() ?? '';
@@ -152,7 +166,8 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(dateText),
-                trailing: const Icon(Icons.calendar_month, color: Colors.teal),
+                trailing:
+                    const Icon(Icons.calendar_month, color: Color(0xFF5D78FF)),
                 onTap: _pickDate,
               ),
               const SizedBox(height: 20),
@@ -161,8 +176,10 @@ class _AdventureBookingScreenState extends State<AdventureBookingScreen> {
                 child: FilledButton.icon(
                   onPressed: _saving ? null : _submit,
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF00A896),
+                    backgroundColor: const Color(0xFF5D78FF),
                     foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
                   ),
                   icon: _saving
                       ? const SizedBox(

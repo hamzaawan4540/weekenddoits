@@ -39,7 +39,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF00A896),
+        backgroundColor: const Color(0xFFE67E22), // Matching theme
         centerTitle: true,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
@@ -48,7 +48,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
         children: [
           // top search / filters
           Container(
-            color: const Color(0xFF00A896),
+            color: const Color(0xFFE67E22), // Matching theme
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
             child: Row(
               children: [
@@ -186,8 +186,8 @@ class _HomestayCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        splashColor: Colors.teal.withOpacity(.08),
-        highlightColor: Colors.teal.withOpacity(.04),
+        splashColor: const Color(0xFF5D78FF).withOpacity(.08),
+        highlightColor: const Color(0xFF5D78FF).withOpacity(.04),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -265,7 +265,7 @@ class _HomestayCard extends StatelessWidget {
                   Row(
                     children: [
                       const Icon(Icons.location_on,
-                          size: 14, color: Colors.teal),
+                          size: 14, color: Color(0xFF5D78FF)),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
@@ -361,7 +361,7 @@ class _CenteredState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 48, color: Colors.teal),
+            Icon(icon, size: 48, color: const Color(0xFF5D78FF)),
             const SizedBox(height: 12),
             Text(title,
                 textAlign: TextAlign.center,
@@ -379,8 +379,8 @@ class _CenteredState extends StatelessWidget {
               OutlinedButton(
                 onPressed: onCta,
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.teal,
-                  side: const BorderSide(color: Colors.teal),
+                  foregroundColor: const Color(0xFF5D78FF),
+                  side: const BorderSide(color: Color(0xFF5D78FF)),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                 ),

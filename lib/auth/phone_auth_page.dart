@@ -32,8 +32,11 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text('Login with Mobile',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.teal,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600, color: Colors.white)),
+        backgroundColor: const Color(0xFFE67E22),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
 
       // Scrollable body so fields never get hidden
@@ -57,9 +60,11 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                             labelText: 'Phone (with country code)',
                             hintText: '+919876543210',
                             filled: true,
-                            fillColor: Colors.teal.shade50,
+                            fillColor:
+                                const Color(0xFF5D78FF).withOpacity(0.05),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: BorderSide.none,
                             ),
                           ),
                           validator: (v) {
@@ -80,9 +85,11 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                             decoration: InputDecoration(
                               labelText: 'OTP',
                               filled: true,
-                              fillColor: Colors.teal.shade50,
+                              fillColor:
+                                  const Color(0xFF5D78FF).withOpacity(0.05),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide.none,
                               ),
                             ),
                             validator: (v) {
@@ -137,11 +144,12 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       }
                     },
               style: FilledButton.styleFrom(
-                backgroundColor: Colors.teal,
+                backgroundColor: const Color(0xFF5D78FF),
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
+                elevation: 0,
               ),
               child: _busy
                   ? const SizedBox(
